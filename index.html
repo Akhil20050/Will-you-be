@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love You</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        #button-container {
+            display: flex;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .yes-button {
+            background-color: #4CAF50; /* Green */
+        }
+        .no-button {
+            background-color: #f44336; /* Red */
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+        button:active {
+            transform: scale(1.05);
+        }
+    </style>
+    <script>
+        function swapButtons() {
+            const container = document.getElementById('button-container');
+            const buttons = Array.from(container.children);
+            const button1Class = buttons[0].className;
+            const button2Class = buttons[1].className;
+            
+            container.innerHTML = '';  // Clear the container
+
+            // Swap the positions and colors of the buttons
+            const button1 = document.createElement('button');
+            button1.className = button2Class;
+            button1.textContent = buttons[1].textContent;
+            button1.onclick = buttons[1].onclick;
+
+            const button2 = document.createElement('button');
+            button2.className = button1Class;
+            button2.textContent = buttons[0].textContent;
+            button2.onclick = buttons[0].onclick;
+
+            container.appendChild(button1);
+            container.appendChild(button2);
+        }
+
+        function yesClicked() {
+            alert('Love You Too!');
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Will you Love Me</h1>
+    <div id="button-container">
+        <button class="yes-button" onclick="yesClicked()">Yes</button>
+        <button class="no-button" onclick="swapButtons()">No</button>
+    </div>
+
+</body>
+</html>
